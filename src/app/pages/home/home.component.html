@@ -60,4 +60,32 @@
 
     <!-- <app-card-single-meteo></app-card-single-meteo> -->
   </div>
+
+  <h2>Il meteo per tutti gli orari</h2>
+  <div class="row justify-content-center m-3">
+    <div
+      *ngFor="let time of meteoInfoAll.list; let i = index"
+      class="card col-12 col-sm-6"
+    >
+      <!-- <img src="" class="card-img-top" alt="..." /> -->
+      <div class="card-body">
+        <h5 class="card-title">Città: {{ meteoInfo.name }}</h5>
+        <p class="card-text">
+          Nuvolosità: {{ meteoInfoAll.list[i].clouds.all }}%
+        </p>
+        <p class="card-text">
+          Temp. Max: {{ meteoInfoAll.list[i].main.temp_max }}
+        </p>
+        <p class="card-text">
+          Temp. Min: {{ meteoInfoAll.list[i].main.temp_min }}
+        </p>
+        <p class="card-text">Dat e Orario: {{ meteoInfoAll.list[i].dt_txt }}</p>
+        <a class="btn btn-primary" (click)="addPref(cityList[0])"
+          >Aggiugni ai preferiti</a
+        >
+      </div>
+    </div>
+
+    <!-- <app-card-single-meteo></app-card-single-meteo> -->
+  </div>
 </div>

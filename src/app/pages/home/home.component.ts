@@ -5,6 +5,7 @@ import { NgForm } from '@angular/forms';
 import { ApiService } from 'src/app/api.service';
 import { ICitySingleResponse } from '../auth/interfaces/icity-single-response';
 import { IResponse } from '../auth/interfaces/iresponse';
+import { IMeteoAll } from '../auth/interfaces/imeteo-all';
 
 @Component({
   selector: 'app-home',
@@ -51,6 +52,7 @@ export class HomeComponent {
   cityList!: ICitySingleResponse[];
 
   meteoInfo!: IMeteoNow;
+  meteoInfoAll!: IMeteoAll;
 
   responseUser!: IResponse;
 
@@ -84,7 +86,7 @@ export class HomeComponent {
   findAllMeteo(city: ICitySingleResponse) {
     this.apiSrv.getMeteoAll(city).subscribe((res) => {
       console.log('Current ALL Weather', res);
-      // this.meteoInfo = res;
+      this.meteoInfoAll = res;
     });
   }
 

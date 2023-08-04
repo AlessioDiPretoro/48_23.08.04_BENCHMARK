@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ICityResponse } from './pages/auth/interfaces/icity-response';
 import { ICitySingleResponse } from './pages/auth/interfaces/icity-single-response';
+import { IMeteoAll } from './pages/auth/interfaces/imeteo-all';
 
 @Injectable({
   providedIn: 'root',
@@ -43,7 +44,7 @@ export class ApiService {
     this.lon = city.lon;
     this.meteoUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${this.lat}&lon=${this.lon}&appid=${this.token}&units=metric`;
     // this.meteoUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${this.lat}&lon=${this.lon}&appid=${this.token}&units=metric`;
-    return this.http.get(this.meteoUrl);
+    return this.http.get<IMeteoAll>(this.meteoUrl);
     // return this.http.get<IMeteoNow>(this.meteoUrl);
   }
 }
