@@ -34,15 +34,35 @@ export class RegisterComponent {
 
   ngOnInit() {
     this.form = this.fb.group({
-      // authData: this.fb.group({
       email: this.fb.control(null, [Validators.required]),
       password: this.fb.control(null, [Validators.required]),
-      // }),
       uName: this.fb.control(null),
       surname: this.fb.control(null),
       passwordConf: this.fb.control(null, [Validators.required]),
       id: this.fb.control(null),
     });
+
+    if (this._Activatedroute.snapshot.paramMap.get('id')) {
+      this.isId = true;
+      this.isLoading = true;
+      this.form.disable();
+      this.authSrv
+        .readThisUser(this._Activatedroute.snapshot.paramMap.get('id')!)
+        .subscribe((res) => {
+          console.log('res', res);
+          this.responseUser = res as IResponse;
+          this.form.setValue({
+            email: this.responseUser.email,
+            uName: this.responseUser.uName,
+            surname: this.responseUser.surname,
+            password: '',
+            passwordConf: '',
+            id: this.responseUser.id,
+          });
+          this.isLoading = false;
+          this.form.enable();
+        });
+    }
   }
 
   sendUser() {
@@ -67,17 +87,19 @@ export class RegisterComponent {
   }
 
   editUser() {
-    this.form.disable();
-    this.responseUser = this.form.value;
-    console.log('this user NEW', this.responseUser);
-    this.isLoading = true;
-    this.authSrv.updateUser(this.responseUser).subscribe((res) => {
-      console.log('Utente aggiornato', res);
+    if (this.form.status === 'VALID') {
+      this.form.disable();
+      this.responseUser = this.form.value;
+      console.log('this user NEW', this.responseUser);
       this.staticAlertClosed = false;
-      setTimeout(() => {
-        this.router.navigate(['/home']);
-      }, 3000);
-    });
+      this.isLoading = true;
+      this.authSrv.updateUser(this.responseUser).subscribe((res) => {
+        console.log('Utente aggiornato', res);
+        setTimeout(() => {
+          this.router.navigate(['/home']);
+        }, 3000);
+      });
+    }
   }
 
   isValid(fieldName: string) {
@@ -92,13 +114,6 @@ export class RegisterComponent {
   }
 
   isPassword(fieldName: string, otherName: string) {
-    // console.log(
-    //   'fieldName === otherName',
-    //   this.form.get(fieldName)?.value === this.form.get(otherName)?.value,
-    //   this.form.get(fieldName)?.value,
-    //   this.form.get(otherName)?.value
-    // );
-
     return this.form.get(fieldName)?.value === this.form.get(otherName)?.value;
   }
   passwordConfirm = (formC: FormControl): ValidationErrors | null => {

@@ -1,1 +1,5 @@
-<p>prefer-list works!</p>
+<ul>
+  <li *ngFor="let item of cityPref; let i = index">
+    <p>{{ cityPref[i].name }}</p>
+  </li>
+</ul>

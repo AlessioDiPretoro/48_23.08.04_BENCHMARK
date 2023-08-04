@@ -1,2 +1,60 @@
-<p>home works!</p>
-<p>FARE RICERCA METEO!</p>
+<h5 class="m-3 text-center">Seleziona la città</h5>
+
+<!-- <ngb-alert *ngIf="staticAlertClosed" [dismissible]="false">
+  <strong>OK Login</strong> Stai per essere redirezionato alla tua home page.
+</ngb-alert> -->
+<div class="position-relative">
+  <form (ngSubmit)="submit(f)" #f="ngForm" class="mt-3 mb-5">
+    <label for="cityName">Nome città:</label>
+    <input
+      class="form-control"
+      type="text"
+      placeholder="Nome città"
+      ngModel
+      name="cityName"
+    />
+    <div class="d-flex justify-content-end mt-1">
+      <button class="btn btn-success">Cerca Città</button>
+    </div>
+  </form>
+  <div class="findedContainer">
+    <ul>
+      <li *ngFor="let city of cityList">
+        <div class="d-flex">
+          <button class="form-control" (click)="findMeteo(city)">
+            Città {{ city.name }}, Lat {{ city.lat }}, long {{ city.lon }}
+          </button>
+          <button
+            *ngIf="logged"
+            class="btn btn-success rounded-circle"
+            (click)="addPref(city)"
+          >
+            +
+          </button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div *ngIf="meteoInfo">
+  <h2>meteo Info</h2>
+
+  <h2>Il meteo in tempo reale</h2>
+  <div class="row justify-content-center m-3">
+    <div class="card col-12 col-sm-6">
+      <!-- <img src="" class="card-img-top" alt="..." /> -->
+      <div class="card-body">
+        <h5 class="card-title">Città: {{ meteoInfo.name }}</h5>
+        <p class="card-text">Nuvolosità: {{ meteoInfo.clouds.all }}%</p>
+        <p class="card-text">Temp. Max: {{ meteoInfo.main.temp_max }}</p>
+        <p class="card-text">Temp. Min: {{ meteoInfo.main.temp_min }}</p>
+        <a class="btn btn-primary" (click)="addPref(cityList[0])"
+          >Aggiugni ai preferiti</a
+        >
+      </div>
+    </div>
+
+    <!-- <app-card-single-meteo></app-card-single-meteo> -->
+  </div>
+</div>

@@ -4,7 +4,7 @@
   <strong>OK Login</strong> Stai per essere redirezionato alla tua home page.
 </ngb-alert>
 
-<form (ngSubmit)="submit(f)" #f="ngForm" class="mt-3 mb-5">
+<form (ngSubmit)="submit(f)" #f="ngForm" class="mt-3 mb-1">
   <label for="email">Inserisci la tua mail</label>
   <input
     class="form-control"
@@ -21,6 +21,6 @@
     ngModel
     name="password"
   />
-  <button class="btn btn-success">Effettua Login</button>
+  <button class="btn btn-success mt-2">Effettua Login</button>
 </form>
-<a class="btn btn-danger" (click)="logOut()">Effettua Log-Out</a>
+<!-- <a class="btn btn-danger" (click)="logOut()">Effettua Log-Out</a> -->

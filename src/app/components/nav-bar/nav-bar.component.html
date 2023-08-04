@@ -38,11 +38,20 @@
           <li class="nav-item" *ngIf="logged === true">
             <a class="nav-link"> OK Loggato</a>
           </li>
-          <li class="nav-item" *ngIf="logged === true">
-            <a class="btn btn-danger" (click)="logOut()">Log-Out</a>
+          <li
+            class="nav-item d-flex align-items-center"
+            *ngIf="logged === true"
+          >
+            <a class="btn btn-danger p-0 me-2" (click)="logOut()">Log-Out</a>
+          </li>
+          <li
+            class="nav-item d-flex align-items-center"
+            *ngIf="logged === true"
+          >
+            <a class="btn btn-danger p-0" (click)="editUser()">Modifica User</a>
           </li>
           <li class="nav-item" *ngIf="!logged === true">
-            <a class="nav-link"> Non Loggato</a>
+            <a class="nav-link"> Utente non Loggato</a>
           </li>
         </ng-container>
       </ul>

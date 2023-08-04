@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/pages/auth/auth.service';
 
 @Component({
@@ -7,9 +8,9 @@ import { AuthService } from 'src/app/pages/auth/auth.service';
   styleUrls: ['./nav-bar.component.scss'],
 })
 export class NavBarComponent {
-  constructor(private authSrv: AuthService) {}
-  logged: any;
+  constructor(private authSrv: AuthService, private router: Router) {}
   public isCollapsed = false;
+  logged: any;
 
   ngOnInit() {
     this.authSrv.isLoggedIn$.subscribe((log: boolean) => {
@@ -29,5 +30,10 @@ export class NavBarComponent {
   logOut() {
     this.authSrv.logout();
     console.log('Ok log out');
+  }
+  editUser() {
+    const route = this.authSrv.user$.subscribe((res) => {
+      this.router.navigate([`/signup/${res?.user.id}`]);
+    });
   }
 }

@@ -6,9 +6,10 @@ ul {
 li button {
   text-align: left;
 }
+
 .findedContainer {
   position: absolute;
   top: 65px;
   text-align: left;
   opacity: 75%;
-}
+}/*# sourceMappingURL=home.component.css.map */

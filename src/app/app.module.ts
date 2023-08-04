@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PreferListComponent } from './pages/prefer-list/prefer-list.component';
 import { AlertComponent } from './components/alert/alert.component';
+import { CardSingleMeteoComponent } from './components/card-single-meteo/card-single-meteo.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { AlertComponent } from './components/alert/alert.component';
     RegisterComponent,
     PreferListComponent,
     AlertComponent,
+    CardSingleMeteoComponent,
   ],
   imports: [
     BrowserModule,

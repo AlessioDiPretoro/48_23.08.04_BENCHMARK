@@ -1,6 +1,9 @@
+import { ICitySingleResponse } from './icity-single-response';
 export interface IUser {
-  email: string;
   id: number;
+
+  email: string;
   uName?: string;
   surname?: string;
+  prefers?: [ICitySingleResponse];
 }
