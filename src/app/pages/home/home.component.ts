@@ -76,8 +76,15 @@ export class HomeComponent {
   findMeteo(city: ICitySingleResponse) {
     this.cityList.length = 0;
     this.apiSrv.getMeteoNowCity(city).subscribe((res) => {
-      console.log('Current Weather', res);
+      // console.log('Current Weather', res);
       this.meteoInfo = res;
+    });
+  }
+
+  findAllMeteo(city: ICitySingleResponse) {
+    this.apiSrv.getMeteoAll(city).subscribe((res) => {
+      console.log('Current ALL Weather', res);
+      // this.meteoInfo = res;
     });
   }
 

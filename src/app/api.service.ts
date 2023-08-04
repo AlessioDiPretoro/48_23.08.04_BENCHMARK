@@ -37,4 +37,13 @@ export class ApiService {
 
     return this.http.get<IMeteoNow>(this.meteoUrl);
   }
+
+  getMeteoAll(city: ICitySingleResponse) {
+    this.lat = city.lat;
+    this.lon = city.lon;
+    this.meteoUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${this.lat}&lon=${this.lon}&appid=${this.token}&units=metric`;
+    // this.meteoUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${this.lat}&lon=${this.lon}&appid=${this.token}&units=metric`;
+    return this.http.get(this.meteoUrl);
+    // return this.http.get<IMeteoNow>(this.meteoUrl);
+  }
 }

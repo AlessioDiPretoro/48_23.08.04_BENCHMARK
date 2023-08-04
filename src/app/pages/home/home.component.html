@@ -21,7 +21,10 @@
     <ul>
       <li *ngFor="let city of cityList">
         <div class="d-flex">
-          <button class="form-control" (click)="findMeteo(city)">
+          <button
+            class="form-control"
+            (click)="findMeteo(city); findAllMeteo(city)"
+          >
             Città {{ city.name }}, Lat {{ city.lat }}, long {{ city.lon }}
           </button>
           <button
