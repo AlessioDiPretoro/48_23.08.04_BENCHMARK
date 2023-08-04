@@ -1,0 +1,20 @@
+{
+  "users": [
+    {
+      "email": "sedo@mailinator.com",
+      "password": "$2a$10$s0Iy53/uK/9g8g6mdhhKAudq/S9DDdvckwjZ4NCePlXbdI1zgXDUe",
+      "uName": "Error voluptas esse ",
+      "surname": "Nostrud consequatur",
+      "passwordConf": "password",
+      "id": 1
+    },
+    {
+      "email": "p@p",
+      "password": "$2a$10$D9Y6D4uTZbtz6M4.ypIYkOa3Ha6MqE0r4aCmyhoGVQFK428GVr1CC",
+      "uName": "Laborum Voluptatem ",
+      "surname": "Excepteur occaecat u",
+      "passwordConf": "password",
+      "id": 2
+    }
+  ]
+}

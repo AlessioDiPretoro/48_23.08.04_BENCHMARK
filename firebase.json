@@ -1,0 +1,16 @@
+{
+  "hosting": {
+    "public": "/dist/48_23.08.04_BENCHMARK",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
